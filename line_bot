@@ -1,1 +1,62 @@
+import logging
+from linebot import LineBotApi
+from linebot.models import TextSendMessage
+import netifaces as ni
+from datetime import datetime
 
+# 配置參數
+CHANNEL_ACCESS_TOKEN = "EJxw1WziIpz27FH+dC3LHMGcnfWzQJ33RZxlCE4MqdJgyOFVxP0g/aXhib74NeI4tesW1I1fcEmSDNVhXAhrTipdelwfWIsf8Sy3FbORtTfFAu4HMl0h9mAPBOp0SWetk6YqDRL8EStooVfwar0qgQdB04t89/1O/w1cDnyilFU="  # 請在此處填入 Token
+LOG_FILE = "bot.log"
+
+# 初始化日誌系統
+logging.basicConfig(
+    filename=LOG_FILE,
+    level=logging.INFO,
+    format="%(asctime)s - %(message)s"
+)
+
+# 初始化 LINE Bot API
+line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
+
+def log_message(message):
+    """記錄訊息到日誌"""
+    logging.info(message)
+    print(message)  # 同時輸出到終端
+
+def get_ip():
+    """取得網卡 eth0 的 IP 地址"""
+    try:
+        ni.ifaddresses("enp0s3")
+        ip = ni.ifaddresses("enp0s3")[ni.AF_INET][0]["addr"]
+        log_message(f"取得 IP 地址: {ip}")
+        return ip
+    except KeyError:
+        log_message("無法取得 IP 地址")
+        return "無法取得 IP 地址"
+
+def get_current_time():
+    """取得當前時間的字串格式"""
+    now = datetime.now()
+    return now.strftime("%Y-%m-%d %H:%M:%S")  # 格式化時間為 YYYY-MM-DD HH:MM:SS
+
+def broadcast_status():
+    """回報系統狀態到 LINE"""
+    log_message("程式啟動中...")
+    
+    # 取得系統資訊
+    ip_address = get_ip()
+    current_time = get_current_time()
+    
+    # 組合訊息
+    message = f"系統啟動成功\nIP 地址: {ip_address}\n時間: {current_time}"
+    
+    try:
+        # 廣播訊息
+        line_bot_api.broadcast(TextSendMessage(text=message))
+        log_message("成功廣播系統狀態")
+    except Exception as e:
+        log_message(f"廣播失敗: {e}")
+        print("訊息廣播失敗", e)
+
+if __name__ == "__main__":
+    broadcast_status()
