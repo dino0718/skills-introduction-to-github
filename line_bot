@@ -3,11 +3,10 @@ from linebot import LineBotApi
 from linebot.models import TextSendMessage
 import netifaces as ni
 from datetime import datetime
+import os
 
 # 配置參數
-CHANNEL_ACCESS_TOKEN = "EJxw1WziIpz27FH+dC3LHMGcnfWzQJ33RZxlCE4MqdJgyOFVxP0g/aXhib74NeI4tesW1I1fcEmSDNVhXAhrTipdelwfWIsf8Sy3FbORtTfFAu4HMl0h9mAPBOp0SWetk6YqDRL8EStooVfwar0qgQdB04t89/1O/w1cDnyilFU="  # 請在此處填入 Token
-LOG_FILE = "bot.log"
-
+CHANNEL_ACCESS_TOKEN = os.getenv("CHANNEL_ACCESS_TOKEN")
 # 初始化日誌系統
 logging.basicConfig(
     filename=LOG_FILE,
