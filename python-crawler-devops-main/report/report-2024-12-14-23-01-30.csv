@@ -1,0 +1,3 @@
+item,url,response,snapshot
+signup,https://4-learn.github.io/python-crawler-devops/signup.html,"{""token"": ""403""}",screenshots\signup_0.png
+signin,https://4-learn.github.io/python-crawler-devops/signin.html,"{""token"": ""eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MjA2NDg5LCJpYXQiOjE3MzQxODg0ODksImp0aSI6IjRjZjUzZGI2N2Q2MzRmYWViYjE5Y2RlYzEzYWQyZDU2IiwidXNlcl9pZCI6MzV9.1szDgUCOO4XULvv3k6qCvV_m3u5ITqapV5Ch_0io_Q4"", ""username"": ""1111111111""}",screenshots\signin_1.png

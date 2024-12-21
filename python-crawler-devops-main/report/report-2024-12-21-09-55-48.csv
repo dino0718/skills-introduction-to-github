@@ -1,0 +1,3 @@
+item,url,response,snapshot
+signup,https://4-learn.github.io/python-crawler-devops/signup.html,API 測試失敗,screenshots\signup_0.png
+signin,https://4-learn.github.io/python-crawler-devops/signin.html,"{""token"": ""eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NzY0MTQ4LCJpYXQiOjE3MzQ3NDYxNDgsImp0aSI6IjYxOTgxNTNlMWZhMDRiZDVhYjI0YTQ5MDM5ZTdhMzAwIiwidXNlcl9pZCI6MzV9.lg64BOL8cOB_xJ2xNbHzeclH5WRbgF9CRaT1e8CFhAo"", ""username"": ""1111111111""}",screenshots\signin_1.png
